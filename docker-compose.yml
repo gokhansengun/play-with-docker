@@ -3,6 +3,7 @@ services:
     haproxy:
         container_name: haproxy
         image: haproxy
+        restart: on-failure
         ports:
             - "80:8080"
         volumes:
@@ -13,6 +14,7 @@ services:
         container_name: pwd
         # use the latest golang image
         image: golang
+        restart: on-failure
         # go to the right place and starts the app
         command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/github.com/play-with-docker/play-with-docker; go run api.go -save /pwd/sessions -name l2  -playground-domain do.pwd.gokhansengun.com -default-session-duration 12h'
         volumes:
@@ -25,6 +27,7 @@ services:
         container_name: l2
         # use the latest golang image
         image: golang
+        restart: on-failure
         # go to the right place and starts the app
         command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/github.com/play-with-docker/play-with-docker/router/l2; go run l2.go -ssh_key_path /etc/ssh/ssh_host_rsa_key -name l2 -save /pwd/networks'
         volumes:
