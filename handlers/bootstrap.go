@@ -197,7 +197,7 @@ func initPlaygrounds() {
 
 func initAssets(p *types.Playground) {
 	if p.AssetsDir == "" {
-		p.AssetsDir = "default"
+		p.AssetsDir = "k8s"
 	}
 
 	var b bytes.Buffer
