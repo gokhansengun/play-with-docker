@@ -16,7 +16,7 @@ services:
         image: golang
         restart: on-failure
         # go to the right place and starts the app
-        command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/github.com/play-with-docker/play-with-docker; go run api.go -save /pwd/sessions -name l2 -playground-domain do.pwd.gokhansengun.com -default-session-duration 12h'
+        command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/github.com/play-with-docker/play-with-docker; go run api.go -save /pwd/sessions -name l2  -playground-domain do.pwk.gokhansengun.com -default-dind-image franela/k8s -default-session-duration 12h'
         volumes:
             # since this app creates networks and launches containers, we need to talk to docker daemon
             - /var/run/docker.sock:/var/run/docker.sock
