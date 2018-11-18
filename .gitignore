@@ -1,3 +1,4 @@
 play-with-docker
 node_modules
 vendor
+.vagrant
